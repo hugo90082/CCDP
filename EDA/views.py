@@ -13,7 +13,7 @@ def hello_view(request):
         'check': EDAData.objects.get(pk=10),
     })
 
-def home(request):
+def show(request):
     def scatter():
         x1 = [1,2,3,4]
         y1 = [30, 35, 25, 45]
@@ -36,4 +36,4 @@ def home(request):
         'plot1': scatter()
     }
 
-    return render(request, 'home/welcome.html', context)
+    return render(request, 'welcome.html', context)
