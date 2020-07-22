@@ -32,26 +32,6 @@ def hello_view(request):
 
 def show(request):
     def scatter():
-        # gender = []
-        # gender0 = EDAData.objects.values_list('gender').filter(date='2018/10/31', gender='0').count()
-        # gender1 = EDAData.objects.values_list('gender').filter(date='2018/10/31', gender='1').count()
-        # gender.append(gender0)
-        # gender.append(gender1)
-
-        # gender = pd.DataFrame(gender)
-
-        # x1 = [1,2,3,4]['性別', '數量']
-        # y1 = [30, 35, 25, 45]
-
-        # trace = go.Scatter(
-        #     x=x1,
-        #     y = y1
-        # )
-        # layout = dict(
-        #     title='Simple Graph',
-        #     xaxis=dict(range=[min(x1), max(x1)]),
-        #     yaxis = dict(range=[min(y1), max(y1)])
-        # )
 
         gender = ["gender0","gender1"]
         gender_df = pd.DataFrame()
@@ -63,15 +43,8 @@ def show(request):
         gender_df["gender"]=gender
         gender_df["count"]=count
 
-        layout = dict(
-            title='Simple Graph',
-            xaxis=dict(range=[0, 1]),
-            yaxis = dict(range=[min(count), max(count)])
-        )
 
-
-        fig = px.bar(gender_df, x="gender", y="count")
-        #return fig.show()
+        fig = px.bar(gender_df, x="gender", y="count", title='10月性別圖')
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
         return plot_div
 
