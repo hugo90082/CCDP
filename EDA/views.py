@@ -10,7 +10,7 @@ def hello_view(request):
     return render(request, 'hello_django.html', {
         'data': "Hello Django ",
         'current_time': str(datetime.now()),
-        'check': EDAData.objects.get(pk=10),
+        'check_list': EDAData.objects.values_list('date', 'number', 'gender', 'age', 'edu', 'homeOwnership', 'job1', 'job2', 'job3', 'job4', 'industry1', 'industry2', 'industry3', 'industry4', 'industry5', 'CDLabel4Month').filter(date='2018/10/31'),
     })
 
 def show(request):
