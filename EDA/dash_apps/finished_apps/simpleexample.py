@@ -14,8 +14,9 @@ app.layout = html.Div([
     dcc.Graph(id='slider-graph', animate=True, style={"backgroundColor": "#1a2d46", 'color': '#ffffff'}),
     dcc.Slider(
         id='slider-updatemode',
-        marks={i: '{}'.format(i) for i in range(20)},
-        max=30,
+        marks={i: '{}'.format(i) for i in range(2)},
+        max=3,
+        min=2,
         value=2,
         step=1,
         updatemode='drag',
