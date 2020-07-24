@@ -10,13 +10,12 @@ app = DjangoDash('SimpleExample', external_stylesheets=external_stylesheets)
 
 
 app.layout = html.Div([
-    html.H1('Square Root Slider Graph'),
+    html.H1('TTTTTTT', style={'margin-top': 10}),
     dcc.Graph(id='slider-graph', animate=True, style={"backgroundColor": "#1a2d46", 'color': '#ffffff'}),
     dcc.Slider(
         id='slider-updatemode',
-        marks={i: '{}'.format(i) for i in range(2)},
-        max=3,
-        min=2,
+        marks={i: '{}'.format(i) for i in range(20)},
+        max=20,
         value=2,
         step=1,
         updatemode='drag',
@@ -36,19 +35,13 @@ def display_value(value):
 
     y = []
     for i in range(value):
-        y.append(i*i)
+        y.append(i)
 
-    graph = go.Scatter(
-        x=x,
-        y=y,
-        name='Manipulate Graph'
-    )
-    layout = go.Layout(
-        paper_bgcolor='#27293d',
-        plot_bgcolor='rgba(0,0,0,0)',
-        xaxis=dict(range=[min(x), max(x)]),
-        yaxis=dict(range=[min(y), max(y)]),
-        font=dict(color='white'),
-
-    )
-    return {'data': [graph], 'layout': layout}
+    graph = [
+                {'x': [1, 2, value], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
+                {'x': [value, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': 'Montréal'},
+            ]
+    layout = {
+                'title': 'Dash Data Visualization'
+            }
+    return {'data': graph, 'layout': layout}

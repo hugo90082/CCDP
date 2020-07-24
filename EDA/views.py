@@ -22,9 +22,9 @@ def hello_view(request):
 
  
  
-    with connection.cursor() as cursor:
-        cursor.execute('SELECT date FROM EDAData GROUP by date')
-        dataDate = cursor.fetchall()
+    # with connection.cursor() as cursor:
+    #     cursor.execute('SELECT date FROM EDAData GROUP by date')
+    #     dataDate = cursor.fetchall()
 
 
     return render(request, 'hello_django.html', {
@@ -39,18 +39,32 @@ def hello_view(request):
 def show(request):
     def scatter():
 
-        gender = ["gender0","gender1"]
-        gender_df = pd.DataFrame()
-        count =[]
-        gender0 = EDAData.objects.values_list('gender').filter(date='2018/10/31', gender='0').count()
-        gender1 = EDAData.objects.values_list('gender').filter(date='2018/10/31', gender='1').count()
-        count.append(gender0)
-        count.append(gender1)
-        gender_df["gender"]=gender
-        gender_df["count"]=count
+        
+        genderDataFrame = pd.DataFrame()
+        with connection.cursor() as cursor:
+            cursor.execute('SELECT date FROM EDAData GROUP by date')
+            dataDate = cursor.fetchall()
+        date = []
+        gender = []
+        count = []
 
+        for i in range(len(dataDate)):
+            date.append(dataDate[i][0])
+            date.append(dataDate[i][0])
+            gender.append("gender0")
+            gender0 = EDAData.objects.values_list('gender').filter(date=dataDate[i][0], gender='0').count()
+            count.append(gender0)
 
-        fig = px.bar(gender_df, x="gender", y="count", title='10月性別圖')
+            gender.append("gender1")
+            gender1 = EDAData.objects.values_list('gender').filter(date=dataDate[i][0], gender='1').count()
+            count.append(gender1)
+
+        genderDataFrame["date"] = date
+        genderDataFrame["gender"] = gender
+        genderDataFrame["count"] = count
+
+        print(genderDataFrame)
+        fig = px.bar(genderDataFrame, x="date", y="count", color="gender", barmode="group", title='性別圖')
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
         return plot_div
 
