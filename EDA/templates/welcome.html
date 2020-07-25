@@ -1,11 +1,13 @@
 {%  extends 'base.html' %}
 {% load static %}
 {% block content %}
-    {{ plot1 | safe }}
+<div style="height: 50%; width: 50%">{{ plot1 | safe }}</div>
+<div style="height: 50%; width: 50%">{{ genderDist | safe }}</div>
+
     {% load plotly_dash %}
     <br>
     <div class="{% plotly_class name='SimpleExample' %} card" style="height: 100%; width: 100%">
-    {% plotly_app name='SimpleExample' ratio=0.45 %}
+        {% plotly_app name='SimpleExample' ratio=0.45 %}
     </div>
 
     
