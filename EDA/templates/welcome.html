@@ -1,13 +1,13 @@
 {%  extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div style="height: 50%; width: 50%">{{ plot1 | safe }}</div>
-<div style="height: 50%; width: 50%">{{ genderDist | safe }}</div>
+<div style="height: 50%; width: 50%; padding-right: 1%;">{{ plot1 | safe }}</div>
+<div style="height: 50%; width: 50%; padding-right: 1%;">{{ genderDist | safe }}</div>
 
     {% load plotly_dash %}
     <br>
-    <div class="{% plotly_class name='SimpleExample' %} card" style="height: 100%; width: 100%">
-        {% plotly_app name='SimpleExample' ratio=0.45 %}
+    <div class="{% plotly_class name='genderCD4' %} card" style="height: 100%; width: 100%; padding-left: 1%; padding-right: 1%;">
+        {% plotly_app name='genderCD4' ratio=0.45 %}
     </div>
 
     
