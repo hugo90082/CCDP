@@ -91,7 +91,6 @@ def show(request):
 
                 gender.append("gender1")
                 gender1 = EDAData.objects.values_list('gender').filter(date=dataDate[i][0], gender='1', CDLabel4Month=j).count()
-                # print(gender1)
                 count.append(gender1)
                 genderCD4.append(j)
 
@@ -100,14 +99,14 @@ def show(request):
         genderDataFrame["count"] = count
         genderDataFrame["genderCD4"] = genderCD4
 
-        print(genderDataFrame)
-        fig = px.bar(genderDataFrame, x="date", y="count", color="genderCD4", barmode="group", title='CD4性別分布圖')
+        fig = px.bar(genderDataFrame, x="gender", y="count", color="genderCD4", barmode="group", title='CD4性別分布圖')
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
+
         return plot_div
 
     context ={
         'plot1': scatter(),
         'genderDist': genderDist()
     }
-
+    
     return render(request, 'welcome.html', context)
