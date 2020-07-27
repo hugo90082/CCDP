@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from EDA.views import hello_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('EDA.urls')),
+    path('table/', include('EDA.urls')),
     path('django_plotly_dash/', include('django_plotly_dash.urls')),
 ]

@@ -47,7 +47,7 @@ jobDataFrame["job"] = job
 jobDataFrame["count"] = count
 jobDataFrame["jobCD4"] = jobCD4
 
-print(jobDataFrame)
+# print(jobDataFrame)
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
