@@ -1,15 +1,24 @@
 {%  extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div style="height: 50%; width: 50%; padding-right: 1%;">{{ plot1 | safe }}</div>
-<div style="height: 50%; width: 50%; padding-right: 1%;">{{ genderDist | safe }}</div>
+<!-- <div style="height: 50%; width: 50%; padding-right: 0.5%;">{{ plot1 | safe }}</div>
+<div style="height: 50%; width: 50%; padding-right: 0.5%;">{{ genderDist | safe }}</div> -->
 
     {% load plotly_dash %}
     <br>
-    <div class="{% plotly_class name='genderCD4' %} card" style="height: 100%; width: 100%; padding-left: 1%; padding-right: 1%;">
-        {% plotly_app name='genderCD4' ratio=0.45 %}
+    <div class="{% plotly_class name='genderCD4' %} card moveCard">
+        {% plotly_app name='genderCD4' ratio=0.35 %}
     </div>
-
+    <div class="{% plotly_class name='jobCD4' %} card moveCard">
+        {% plotly_app name='jobCD4' ratio=0.35 %}
+    </div>
     
-
+<style>
+    .moveCard {
+        height: 100%;
+        width: 100%;
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+</style>
 {% endblock %}

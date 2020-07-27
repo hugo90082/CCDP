@@ -7,8 +7,6 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 from django_plotly_dash import DjangoDash
 
-# Create your views here.
-#df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 genderDataFrame = pd.DataFrame()
 with connection.cursor() as cursor:
     cursor.execute('SELECT date FROM EDAData GROUP by date')
@@ -38,11 +36,6 @@ genderDataFrame["gender"] = gender
 genderDataFrame["count"] = count
 genderDataFrame["genderCD4"] = genderCD4
 
-
-
-
-
-
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = DjangoDash('genderCD4', external_stylesheets=external_stylesheets)
@@ -55,7 +48,6 @@ app.layout = html.Div([
         max=len(dataDate)-1,
         marks={i: dataDate[i][0] for i in range(len(dataDate))},
         value=0,
-        
         
     )
 ])
