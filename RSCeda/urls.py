@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler400, handler403, handler404, handler500
+from EDA import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,3 +25,8 @@ urlpatterns = [
     path('our_model/', include('EDA.urls')),
     path('django_plotly_dash/', include('django_plotly_dash.urls')),
 ]
+
+handler500 = views.server_error
+handler400 = views.bad_request
+handler403 = views.forbidden
+handler404 = views.page_not_found

@@ -2,15 +2,12 @@
 {% load static %}
 {% block content %}
 
-    <!-- {% load plotly_dash %}
-    <br> -->
-
-<style>
-    .moveCard {
-        height: 100%;
-        width: 100%;
-        padding-left: 1%;
-        padding-right: 1%;
-    }
-</style>
+    <br>
+    <div style="height: 100%; width: 100%; padding-right: 1.5%;">
+        {{ correlationHeatmap | safe }}
+    </div>
+    <br>
+    <div style="height: 100%; width: 100%; padding-right: 1.5%; padding-left: 1%;">
+        {{ significantHistogram | safe }}
+    </div>
 {% endblock %}

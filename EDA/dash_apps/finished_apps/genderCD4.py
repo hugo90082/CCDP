@@ -58,10 +58,10 @@ app.layout = html.Div([
     [Input('date-slider', 'value')])
 
 def update_figure(selected_date):
-    newdate=dataDate[selected_date][0]
-    filtered_df = genderDataFrame[genderDataFrame.date==newdate]
+    
+    filtered_df = genderDataFrame[genderDataFrame.date==dataDate[selected_date][0]]
 
-    fig = px.bar(filtered_df, x="gender", y="count", color="genderCD4", barmode="group", title=newdate+'：CD4性別分布圖')
+    fig = px.bar(filtered_df, x="gender", y="count", color="genderCD4", barmode="group", title=dataDate[selected_date][0]+'：CD4性別分布圖')
 
     fig.update_layout(transition_duration=100)
     
