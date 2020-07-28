@@ -19,6 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('EDA.urls')),
-    path('table/', include('EDA.urls')),
+    path('basic_statistic/', include('EDA.urls')),
+    path('our_model/', include('EDA.urls')),
     path('django_plotly_dash/', include('django_plotly_dash.urls')),
 ]
