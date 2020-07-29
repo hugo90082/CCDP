@@ -273,4 +273,5 @@ def ourModel(request):
         'correlationHeatmap': correlationHeatmap(),
         'significantHistogram': significantHistogram(),
     }
+    
     return render(request, 'ourModel.html', context)
